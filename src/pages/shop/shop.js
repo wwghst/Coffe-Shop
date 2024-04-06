@@ -1,1 +1,1 @@
-import 'shop.scss';
+import './shop.scss';
