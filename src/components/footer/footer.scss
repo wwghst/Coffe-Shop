@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  &__menu {
+    display: flex;
+    align-items: end;
+    gap: 50px;
+  }
+
+  &__link {
+    font-size: 15px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  &__logo {
+    width: 50px;
+  }
+}
