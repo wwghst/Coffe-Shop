@@ -1,4 +1,5 @@
 import { Component } from 'react';
+
 import LogoOne from '@assets/LogoOne.svg';
 
 import './header.scss';
