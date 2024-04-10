@@ -1,4 +1,4 @@
-import { Footer, Header, TittleHome } from './components';
+import { Header, TittleShop } from './components';
 
 import './App.css';
 
@@ -6,8 +6,7 @@ const App = () => {
   return (
     <div className='container'>
       <Header />
-      <TittleHome />
-      <Footer />
+      <TittleShop />
     </div>
   );
 };
