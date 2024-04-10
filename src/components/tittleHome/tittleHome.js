@@ -21,7 +21,9 @@ class TittleHome extends Component {
             <p className='tittleHome__text'>We makes every day full of energy and taste</p>
             <p className='tittleHome__text'>Want to try our beans?</p>
           </div>
-          <button className='tittleHome__btn'>More</button>
+          <button className='tittleHome__btn' type='button'>
+            More
+          </button>
         </div>
       </div>
     );
