@@ -4,7 +4,7 @@ import LogoOne from '../../assets/LogoOne.svg';
 
 import './header.scss';
 
-class Header extends Component {
+export class Header extends Component {
   render() {
     return (
       <header className='header'>
@@ -24,5 +24,3 @@ class Header extends Component {
     );
   }
 }
-
-export { Header };
