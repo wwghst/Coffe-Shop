@@ -2,9 +2,9 @@ import { Component } from 'react';
 
 import ShopBg from '../../assets/images/ShopTittleBg.png';
 
-import './tittleShop.scss';
+import './tittle.scss';
 
-class TittleShop extends Component {
+class Tittle extends Component {
   render() {
     return (
       <div className='tittleShop'>
@@ -15,4 +15,4 @@ class TittleShop extends Component {
   }
 }
 
-export { TittleShop };
+export { Tittle };
