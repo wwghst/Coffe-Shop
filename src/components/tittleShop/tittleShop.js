@@ -8,7 +8,7 @@ class TittleShop extends Component {
   render() {
     return (
       <div className='tittleShop'>
-        <img src={ShopBg} alt='homeBg' className='tittleHome__bg' />
+        <img src={ShopBg} alt='homeBg' className='tittleShop__bg' />
         <h1 className='tittleShop__title'>Our Coffee</h1>
       </div>
     );
