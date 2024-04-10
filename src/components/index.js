@@ -3,4 +3,4 @@ export * from './content/content';
 export * from './footer/footer';
 export * from './header/header';
 export * from './tittleHome/tittleHome';
-export * from './tittleShop/tittlehop';
+export * from './tittleShop/tittleShop';
