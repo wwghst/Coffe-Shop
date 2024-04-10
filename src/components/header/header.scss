@@ -3,12 +3,15 @@
     align-items: end;
     justify-content: start;
     gap: 50px;
-    background-color: black;
 
     &__link{
         font-size: 15px;
         color: #ffffff;
         text-decoration: none;
+
+        &:hover{
+            text-decoration: underline;
+        }
     }
 
     &__logo{
