@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import LogoBlack from '../../assets/LogoBlack.svg';
+import LogoTwo from '../../assets/LogoTwo.svg';
 import LogoOne from '../../assets/LogoOne.svg';
 
 import './sectionTitle.scss';
@@ -20,7 +20,7 @@ export class SectionTitle extends Component {
           {this.styleColor === 'white' || this.styleColor === '#fff' ? (
             <img src={LogoOne} alt='' />
           ) : (
-            <img src={LogoBlack} alt='' />
+            <img src={LogoTwo} alt='' />
           )}
         </span>
       </div>

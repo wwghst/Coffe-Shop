@@ -6,10 +6,18 @@ import { SectionTitle } from '../sectionTitle/sectionTitle';
 import './footer.scss';
 
 export class Footer extends Component {
+  constructor(props) {
+    super(props);
+
+    const { color, logoColor } = this.props;
+    this.styleColor = color;
+    this.logoColor = logoColor;
+  }
+
   render() {
     return (
       <footer className='footer'>
-        <div className='footer__menu'>
+        <div className='footer__menu' style={{ color: this.styleColor ?? '#000' }}>
           <div>
             <img src={LogoOne} alt='logo' className='footer__logo' />
             <a href='#!' className='footer__link'>
@@ -24,7 +32,7 @@ export class Footer extends Component {
           </a>
         </div>
 
-        <SectionTitle color='#fff' />
+        <SectionTitle color={this.logoColor ?? this.styleColor ?? '#000'} />
       </footer>
     );
   }
