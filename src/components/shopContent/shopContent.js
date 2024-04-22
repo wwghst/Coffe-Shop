@@ -15,8 +15,20 @@ class ShopContent extends Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    const {data, loading, error} = this.props
+    if (prevProps.data !== data) {
+      this.setState({
+        data,
+        loading,
+        error,
+      });
+    }
+  }
+
   render() {
     const { data, loading, error } = this.state;
+    const { onFilter } = this.props;
     if (loading) {
       return <div className='load'>Loading...</div>;
     }
@@ -24,8 +36,12 @@ class ShopContent extends Component {
     if (error) {
       return <div>Error: {error}</div>;
     }
-    
-  
+
+    const buttonsData = [
+      { name: 'Brazil', label: 'Brazil' },
+      { name: 'Columbia', label: 'Colombia' },
+      { name: 'Kenya', label: 'Kenya' }
+    ];
 
     return (
       <div className='shopContent'>
@@ -37,15 +53,16 @@ class ShopContent extends Component {
           <div className='shopContent__box'>
             <h2 className='shopContent__title'>Or filter</h2>
             <div className='shopContent__btns'>
-              <button className='shopContent__btn' type='button' id='Brazil' >
-                Brazil
-              </button>
-              <button className='shopContent__btn' type='button' id='Colombia'>
-                Colombia
-              </button>
-              <button className='shopContent__btn' type='button' id='Kenya'>
-                Kenya
-              </button>
+              {buttonsData.map(({ name, label }) => (
+                <button
+                  className='shopContent__btn'
+                  type='button'
+                  key={name}
+                  onClick={() => onFilter(name)}
+                >
+                  {label}
+                </button>
+              ))}
             </div>
           </div>
         </div>

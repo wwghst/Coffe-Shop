@@ -11,7 +11,8 @@ export class ShopPage extends Component {
     this.state = {
       loading: true,
       error: null,
-      data: null,
+      data: [], // Инициализируем data пустым массивом
+      filter: ''
     };
   }
 
@@ -25,7 +26,7 @@ export class ShopPage extends Component {
       })
       .then((data) => {
         this.setState({
-          data, 
+          data,
           loading: false
         });
         return data;
@@ -38,14 +39,40 @@ export class ShopPage extends Component {
       });
   }
 
+  onFilter = (filter) => {
+    this.setState({ filter });
+  };
+
+  filterPosts(items) {
+    const { filter } = this.state;
+    switch (filter) {
+      case 'Brazil':
+        return items.filter((item) => item.city === 'Brazil');
+      case 'Columbia':
+        return items.filter((item) => item.city === 'Columbia');
+      case 'Kenya':
+        return items.filter((item) => item.city === 'Kenya');
+      default:
+        return items;
+    }
+  }
+
   render() {
-    const { data, loading, error} = this.state;
+    const { data, loading, error } = this.state;
+    const visibleData = this.filterPosts(data);
     return (
       <div className='container'>
         <Header />
         <Tittle text='Our Coffee' alt='coffee' imgName={ShopBg} />
         <AboutShop />
-        {!loading && !error && <ShopContent data={data} loading={loading} error={error} />}
+        {!loading && !error && (
+          <ShopContent
+            data={visibleData}
+            loading={loading}
+            error={error}
+            onFilter={this.onFilter}
+          />
+        )}
         <Footer color='#000' />
       </div>
     );
