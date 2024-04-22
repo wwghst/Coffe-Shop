@@ -13,6 +13,7 @@ export class ShopPage extends Component {
       error: null
     };
   }
+
   componentDidMount() {
     fetch('https://66169b81ed6b8fa43480e96b.mockapi.io/carts')
       .then((response) => {
@@ -38,12 +39,13 @@ export class ShopPage extends Component {
   }
 
   render() {
+    const { data, loading, error } = this.state;
     return (
       <div className='container'>
         <Header />
         <Tittle text='Our Coffee' alt='coffee' imgName={ShopBg} />
         <AboutShop />
-        <ShopContent data={this.state.data} loading={this.state.loading} error={this.state.error} />
+        <ShopContent data={data} loading={loading} error={error} />
         <Footer color='#000' />
       </div>
     );
