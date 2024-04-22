@@ -11,7 +11,7 @@ export class ShopPage extends Component {
     this.state = {
       loading: true,
       error: null,
-      data: null // Добавляем data в состояние компонента
+      data: null,
     };
   }
 
@@ -25,7 +25,7 @@ export class ShopPage extends Component {
       })
       .then((data) => {
         this.setState({
-          data, // Устанавливаем данные в состояние компонента
+          data, 
           loading: false
         });
         return data;
@@ -39,8 +39,7 @@ export class ShopPage extends Component {
   }
 
   render() {
-    const { data, loading, error } = this.state;
-    // Добавляем условие проверки наличия данных перед передачей в ShopContent
+    const { data, loading, error} = this.state;
     return (
       <div className='container'>
         <Header />

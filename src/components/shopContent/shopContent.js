@@ -17,7 +17,6 @@ class ShopContent extends Component {
 
   render() {
     const { data, loading, error } = this.state;
-
     if (loading) {
       return <div className='load'>Loading...</div>;
     }
@@ -25,6 +24,8 @@ class ShopContent extends Component {
     if (error) {
       return <div>Error: {error}</div>;
     }
+    
+  
 
     return (
       <div className='shopContent'>
@@ -36,13 +37,13 @@ class ShopContent extends Component {
           <div className='shopContent__box'>
             <h2 className='shopContent__title'>Or filter</h2>
             <div className='shopContent__btns'>
-              <button className='shopContent__btn' type='button'>
+              <button className='shopContent__btn' type='button' id='Brazil' >
                 Brazil
               </button>
-              <button className='shopContent__btn' type='button'>
+              <button className='shopContent__btn' type='button' id='Colombia'>
                 Colombia
               </button>
-              <button className='shopContent__btn' type='button'>
+              <button className='shopContent__btn' type='button' id='Kenya'>
                 Kenya
               </button>
             </div>
