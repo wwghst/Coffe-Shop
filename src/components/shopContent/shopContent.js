@@ -40,7 +40,8 @@ class ShopContent extends Component {
     const buttonsData = [
       { name: 'Brazil', label: 'Brazil' },
       { name: 'Columbia', label: 'Colombia' },
-      { name: 'Kenya', label: 'Kenya' }
+      { name: 'Kenya', label: 'Kenya' },
+      { name: 'All', label: 'All' },
     ];
 
     return (
