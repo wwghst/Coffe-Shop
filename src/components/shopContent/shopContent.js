@@ -11,7 +11,7 @@ class ShopContent extends Component {
     this.state = {
       data: props.data,
       loading: props.loading,
-      error: null
+      error: props.error
     };
   }
 
