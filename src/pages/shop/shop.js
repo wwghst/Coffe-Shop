@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 import ShopBg from '../../assets/images/ShopTittleBg.png';
 import { AboutShop, Footer, Header, ShopContent, Tittle } from '../../components';
@@ -10,7 +10,8 @@ export class ShopPage extends Component {
     super(props);
     this.state = {
       loading: true,
-      error: null
+      error: null,
+      data: null // Добавляем data в состояние компонента
     };
   }
 
@@ -24,7 +25,7 @@ export class ShopPage extends Component {
       })
       .then((data) => {
         this.setState({
-          data,
+          data, // Устанавливаем данные в состояние компонента
           loading: false
         });
         return data;
@@ -34,18 +35,18 @@ export class ShopPage extends Component {
           error: error.message,
           loading: false
         });
-        return error;
       });
   }
 
   render() {
     const { data, loading, error } = this.state;
+    // Добавляем условие проверки наличия данных перед передачей в ShopContent
     return (
       <div className='container'>
         <Header />
         <Tittle text='Our Coffee' alt='coffee' imgName={ShopBg} />
         <AboutShop />
-        <ShopContent data={data} loading={loading} error={error} />
+        {!loading && !error && <ShopContent data={data} loading={loading} error={error} />}
         <Footer color='#000' />
       </div>
     );

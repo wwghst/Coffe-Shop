@@ -15,7 +15,6 @@ class ShopContent extends Component {
     };
   }
 
-
   render() {
     const { data, loading, error } = this.state;
 
