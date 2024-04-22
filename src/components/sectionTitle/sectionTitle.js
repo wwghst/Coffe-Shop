@@ -1,7 +1,7 @@
 import { Component } from 'react';
 
-import LogoTwo from '../../assets/LogoTwo.svg';
 import LogoOne from '../../assets/LogoOne.svg';
+import LogoTwo from '../../assets/LogoTwo.svg';
 
 import './sectionTitle.scss';
 
