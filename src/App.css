@@ -9,3 +9,7 @@ body{
   font-family: Merienda, serif;
 }
 
+ul,li{
+  list-style: none;
+  padding: 0;
+}
