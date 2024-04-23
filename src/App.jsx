@@ -7,6 +7,7 @@ import './App.css';
 
 const App = () => {
   return <ShopPage />;
+  // return <Home />;
 };
 
 export default App;
