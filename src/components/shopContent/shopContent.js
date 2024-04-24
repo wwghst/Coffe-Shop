@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import BlackHeart from '../../assets/BlackHeart.svg';
 import Heart from '../../assets/Heart.svg';
 import Img from '../../assets/images/1.png';
 import Plus from '../../assets/Plus.svg';
@@ -104,7 +105,11 @@ class ShopContent extends Component {
                 id='favorite'
                 onClick={() => this.onPut(item.id, 'favorite')}
               >
-                <img src={Heart} alt='heart' className='shopContent__heartImg' />
+                <img
+                  src={item.favorite ? BlackHeart : Heart}
+                  alt='heart'
+                  className='shopContent__heartImg'
+                />
               </button>
               <img src={Img} alt='cart' className='shopContent__cartImg' />
               <h2 className='shopContent__title'>{item.title}</h2>
