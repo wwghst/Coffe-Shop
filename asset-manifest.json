@@ -1,13 +1,26 @@
 {
   "files": {
-    "main.css": "/Coffe-Shop/static/css/main.1a7488ce.css",
-    "main.js": "/Coffe-Shop/static/js/main.aa67eb9b.js",
+    "main.css": "/Coffe-Shop/static/css/main.8a66f6d2.css",
+    "main.js": "/Coffe-Shop/static/js/main.493650d6.js",
+    "static/media/HomeCards.png": "/Coffe-Shop/static/media/HomeCards.d7296034fc5974bb42b9.png",
+    "static/media/HomeCard-1.png": "/Coffe-Shop/static/media/HomeCard-1.a672c58b6e617572b337.png",
+    "static/media/HomeBg.png": "/Coffe-Shop/static/media/HomeBg.6e31be17fdd6f04a7193.png",
+    "static/media/HomeCard-2.png": "/Coffe-Shop/static/media/HomeCard-2.78e765101f77c06ff0a3.png",
+    "static/media/ShopTittleBg.png": "/Coffe-Shop/static/media/ShopTittleBg.301e0d5928deaf6f5526.png",
+    "static/media/FavoriteAndCartTittleBg.png": "/Coffe-Shop/static/media/FavoriteAndCartTittleBg.e1be0f2d81c4027dbac9.png",
+    "static/media/aboutShopImg.png": "/Coffe-Shop/static/media/aboutShopImg.fda6a55a3c6bb6b33b0d.png",
+    "static/media/1.png": "/Coffe-Shop/static/media/1.66b88f5283c89c0b4083.png",
+    "static/media/LogoOne.svg": "/Coffe-Shop/static/media/LogoOne.330e4d9bf86837d0c64a93734f5fa83a.svg",
+    "static/media/LogoTwo.svg": "/Coffe-Shop/static/media/LogoTwo.80373bfccb138178ac33c9f495c04666.svg",
     "index.html": "/Coffe-Shop/index.html",
-    "main.1a7488ce.css.map": "/Coffe-Shop/static/css/main.1a7488ce.css.map",
-    "main.aa67eb9b.js.map": "/Coffe-Shop/static/js/main.aa67eb9b.js.map"
+    "static/media/Heart.svg": "/Coffe-Shop/static/media/Heart.5d313573dfdf8a533aa6281c6c8efa5f.svg",
+    "static/media/BlackHeart.svg": "/Coffe-Shop/static/media/BlackHeart.6df608077f9725811c4f060d7575b7ad.svg",
+    "static/media/Plus.svg": "/Coffe-Shop/static/media/Plus.775639fe71980cb147b9fa5f431840a1.svg",
+    "main.8a66f6d2.css.map": "/Coffe-Shop/static/css/main.8a66f6d2.css.map",
+    "main.493650d6.js.map": "/Coffe-Shop/static/js/main.493650d6.js.map"
   },
   "entrypoints": [
-    "static/css/main.1a7488ce.css",
-    "static/js/main.aa67eb9b.js"
+    "static/css/main.8a66f6d2.css",
+    "static/js/main.493650d6.js"
   ]
 }
