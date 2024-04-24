@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Heart from '../../assets/Heart.svg';
 import Img from '../../assets/images/1.png';
 import Plus from '../../assets/Plus.svg';
 
@@ -29,6 +30,30 @@ class ShopContent extends Component {
     this.setState({ search });
     onSearch(search);
   };
+
+  onPut(key, btnId) {
+    if (btnId === 'favorite') {
+      fetch(`https://66169b81ed6b8fa43480e96b.mockapi.io/carts/${key}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          favorite: true
+        })
+      });
+    } else if (btnId === 'basket') {
+      fetch(`https://66169b81ed6b8fa43480e96b.mockapi.io/carts/${key}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          inCart: true
+        })
+      });
+    }
+  }
 
   render() {
     const { data, search } = this.state;
@@ -71,12 +96,25 @@ class ShopContent extends Component {
           </div>
         </div>
         <div className='shopContent__main'>
-          {data.map((item, index) => (
-            <div className='shopContent__cart' key={index}>
+          {data.map((item) => (
+            <div className='shopContent__cart' key={item.id}>
+              <button
+                className='shopContent__favBtn'
+                type='button'
+                id='favorite'
+                onClick={() => this.onPut(item.id, 'favorite')}
+              >
+                <img src={Heart} alt='heart' className='shopContent__heartImg' />
+              </button>
               <img src={Img} alt='cart' className='shopContent__cartImg' />
               <h2 className='shopContent__title'>{item.title}</h2>
               <div className='shopContent__cartFooter'>
-                <button className='shopContent__plusBtn' type='button'>
+                <button
+                  className='shopContent__plusBtn'
+                  type='button'
+                  id='basket'
+                  onClick={() => this.onPut(item.id, 'basket')}
+                >
                   <img src={Plus} alt='plus' />
                 </button>
                 <div className='shopContent__count'>
