@@ -26,9 +26,9 @@ class ShopContent extends Component {
   onSearch = (e) => {
     const { onSearch } = this.props;
     const search = e.target.value;
-    this.setState({ search })
-    onSearch(search)
-  }
+    this.setState({ search });
+    onSearch(search);
+  };
 
   render() {
     const { data, search } = this.state;
@@ -46,7 +46,13 @@ class ShopContent extends Component {
         <div className='shopContent__header'>
           <div className='shopContent__box'>
             <h2 className='shopContent__title'>Looking for</h2>
-            <input className='shopContent__input' type='text' placeholder='start typing here...' onChange={this.onSearch} value={search} />
+            <input
+              className='shopContent__input'
+              type='text'
+              placeholder='start typing here...'
+              onChange={this.onSearch}
+              value={search}
+            />
           </div>
           <div className='shopContent__box'>
             <h2 className='shopContent__title'>Or filter</h2>

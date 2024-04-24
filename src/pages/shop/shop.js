@@ -44,23 +44,20 @@ export class ShopPage extends Component {
     this.setState({ filter });
   };
 
-
   onSearch = (search) => {
     this.setState({ search });
-  }
-
+  };
 
   searchEmp = (items) => {
     const { search } = this.state;
     if (search.length === 0) {
-      return items
+      return items;
     }
 
-
-    return items.filter(item => {
-      return item.title.indexOf(search) > -1
-    })
-  }
+    return items.filter((item) => {
+      return item.title.indexOf(search) > -1;
+    });
+  };
 
   filterPosts(items) {
     const { filter } = this.state;
