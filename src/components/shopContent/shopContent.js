@@ -10,38 +10,35 @@ class ShopContent extends Component {
     super(props);
     this.state = {
       data: props.data,
-      loading: props.loading,
-      error: props.error
+      search: ''
     };
   }
 
   componentDidUpdate(prevProps) {
-    const {data, loading, error} = this.props
+    const { data } = this.props;
     if (prevProps.data !== data) {
       this.setState({
-        data,
-        loading,
-        error,
+        data
       });
     }
   }
 
-  render() {
-    const { data, loading, error } = this.state;
-    const { onFilter } = this.props;
-    if (loading) {
-      return <div className='load'>Loading...</div>;
-    }
+  onSearch = (e) => {
+    const { onSearch } = this.props;
+    const search = e.target.value;
+    this.setState({ search });
+    onSearch(search);
+  };
 
-    if (error) {
-      return <div>Error: {error}</div>;
-    }
+  render() {
+    const { data, search } = this.state;
+    const { onFilter } = this.props;
 
     const buttonsData = [
       { name: 'Brazil', label: 'Brazil' },
       { name: 'Columbia', label: 'Colombia' },
       { name: 'Kenya', label: 'Kenya' },
-      { name: 'All', label: 'All' },
+      { name: 'All', label: 'All' }
     ];
 
     return (
@@ -49,7 +46,13 @@ class ShopContent extends Component {
         <div className='shopContent__header'>
           <div className='shopContent__box'>
             <h2 className='shopContent__title'>Looking for</h2>
-            <input className='shopContent__input' type='text' placeholder='start typing here...' />
+            <input
+              className='shopContent__input'
+              type='text'
+              placeholder='start typing here...'
+              onChange={this.onSearch}
+              value={search}
+            />
           </div>
           <div className='shopContent__box'>
             <h2 className='shopContent__title'>Or filter</h2>

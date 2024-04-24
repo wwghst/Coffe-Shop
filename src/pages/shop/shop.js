@@ -12,7 +12,8 @@ export class ShopPage extends Component {
       loading: true,
       error: null,
       data: [], // Инициализируем data пустым массивом
-      filter: ''
+      filter: '',
+      search: ''
     };
   }
 
@@ -43,6 +44,21 @@ export class ShopPage extends Component {
     this.setState({ filter });
   };
 
+  onSearch = (search) => {
+    this.setState({ search });
+  };
+
+  searchEmp = (items) => {
+    const { search } = this.state;
+    if (search.length === 0) {
+      return items;
+    }
+
+    return items.filter((item) => {
+      return item.title.indexOf(search) > -1;
+    });
+  };
+
   filterPosts(items) {
     const { filter } = this.state;
     switch (filter) {
@@ -59,7 +75,7 @@ export class ShopPage extends Component {
 
   render() {
     const { data, loading, error } = this.state;
-    const visibleData = this.filterPosts(data);
+    const visibleData = this.filterPosts(this.searchEmp(data));
     return (
       <div className='container'>
         <Header />
@@ -71,6 +87,7 @@ export class ShopPage extends Component {
             loading={loading}
             error={error}
             onFilter={this.onFilter}
+            onSearch={this.onSearch}
           />
         )}
         <Footer color='#000' />
