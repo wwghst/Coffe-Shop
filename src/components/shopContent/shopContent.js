@@ -8,57 +8,8 @@ import Plus from '../../assets/Plus.svg';
 import './shopContent.scss';
 
 class ShopContent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: props.data,
-      search: ''
-    };
-  }
-
-  componentDidUpdate(prevProps) {
-    const { data } = this.props;
-    if (prevProps.data !== data) {
-      this.setState({
-        data
-      });
-    }
-  }
-
-  onSearch = (e) => {
-    const { onSearch } = this.props;
-    const search = e.target.value;
-    this.setState({ search });
-    onSearch(search);
-  };
-
-  onPut(key, btnId) {
-    if (btnId === 'favorite') {
-      fetch(`https://66169b81ed6b8fa43480e96b.mockapi.io/carts/${key}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          favorite: true
-        })
-      });
-    } else if (btnId === 'basket') {
-      fetch(`https://66169b81ed6b8fa43480e96b.mockapi.io/carts/${key}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          inCart: true
-        })
-      });
-    }
-  }
-
   render() {
-    const { data, search } = this.state;
-    const { onFilter } = this.props;
+    const { data, onFilter, onSearch, onPut } = this.props;
 
     const buttonsData = [
       { name: 'Brazil', label: 'Brazil' },
@@ -76,8 +27,7 @@ class ShopContent extends Component {
               className='shopContent__input'
               type='text'
               placeholder='start typing here...'
-              onChange={this.onSearch}
-              value={search}
+              onChange={(e) => onSearch(e.target.value)}
             />
           </div>
           <div className='shopContent__box'>
@@ -98,12 +48,15 @@ class ShopContent extends Component {
         </div>
         <div className='shopContent__main'>
           {data.map((item) => (
-            <div className='shopContent__cart' key={item.id}>
+            <div className='shopContent__cart'>
               <button
                 className='shopContent__favBtn'
                 type='button'
                 id='favorite'
-                onClick={() => this.onPut(item.id, 'favorite')}
+                onClick={() => {
+                  onPut(item.id, 'favorite');
+                  item.favorite = true;
+                }}
               >
                 <img
                   src={item.favorite ? BlackHeart : Heart}
@@ -118,7 +71,7 @@ class ShopContent extends Component {
                   className='shopContent__plusBtn'
                   type='button'
                   id='basket'
-                  onClick={() => this.onPut(item.id, 'basket')}
+                  onClick={() => onPut(item.id, 'basket')}
                 >
                   <img src={Plus} alt='plus' />
                 </button>

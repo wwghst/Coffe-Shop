@@ -9,36 +9,93 @@ export class ShopPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
-      error: null,
-      data: [], // Инициализируем data пустым массивом
+      loading: props.loading,
+      error: props.error,
+      data: props.data,
       filter: '',
       search: ''
     };
   }
 
-  componentDidMount() {
-    fetch('https://66169b81ed6b8fa43480e96b.mockapi.io/carts')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        this.setState({
-          data,
-          loading: false
-        });
-        return data;
-      })
-      .catch((error) => {
-        this.setState({
-          error: error.message,
-          loading: false
-        });
+  componentDidUpdate(prevProps) {
+    const { data, loading, error } = this.props;
+    if (prevProps.data !== data || prevProps.loading !== loading || prevProps.error !== error) {
+      this.setState({
+        loading,
+        error,
+        data
       });
+    }
   }
+
+  onPut = (key, btnId) => {
+    const { data } = this.state;
+    if (btnId === 'favorite') {
+      fetch(`https://66169b81ed6b8fa43480e96b.mockapi.io/carts/${key}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          favorite: true
+        })
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Failed to update favorite status');
+          }
+          return response.json();
+        })
+        .then(() => {
+          const updatedData = data.map((item) => {
+            if (item.id === key) {
+              return { ...item, favorite: true };
+            }
+            return item;
+          });
+          return updatedData; // Вернем обновленные данные
+        })
+        .then((updatedData) => {
+          this.setState({ data: updatedData });
+          return data;
+        })
+        .catch((error) => {
+          console.error('Failed to update favorite status:', error);
+        });
+    } else if (btnId === 'basket') {
+      fetch(`https://66169b81ed6b8fa43480e96b.mockapi.io/carts/${key}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          inCart: true
+        })
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Failed to update cart status');
+          }
+          return response.json();
+        })
+        .then(() => {
+          const updatedData = data.map((item) => {
+            if (item.id === key) {
+              return { ...item, inCart: true };
+            }
+            return item;
+          });
+          return updatedData;
+        })
+        .then((updatedData) => {
+          this.setState({ data: updatedData });
+          return data;
+        })
+        .catch((error) => {
+          console.error('Failed to update cart status:', error);
+        });
+    }
+  };
 
   onFilter = (filter) => {
     this.setState({ filter });
@@ -81,15 +138,15 @@ export class ShopPage extends Component {
         <Header />
         <Tittle text='Our Coffee' alt='coffee' imgName={ShopBg} />
         <AboutShop />
-        {!loading && !error && (
-          <ShopContent
-            data={visibleData}
-            loading={loading}
-            error={error}
-            onFilter={this.onFilter}
-            onSearch={this.onSearch}
-          />
-        )}
+        <ShopContent
+          data={visibleData}
+          loading={loading}
+          error={error}
+          onFilter={this.onFilter}
+          onSearch={this.onSearch}
+          onPut={this.onPut}
+        />
+
         <Footer color='#000' />
       </div>
     );
