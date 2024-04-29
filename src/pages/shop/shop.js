@@ -28,6 +28,75 @@ export class ShopPage extends Component {
     }
   }
 
+  onPut = (key, btnId) => {
+    const { data } = this.state;
+    if (btnId === 'favorite') {
+      fetch(`https://66169b81ed6b8fa43480e96b.mockapi.io/carts/${key}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          favorite: true
+        })
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Failed to update favorite status');
+          }
+          return response.json();
+        })
+        .then(() => {
+          const updatedData = data.map((item) => {
+            if (item.id === key) {
+              return { ...item, favorite: true };
+            }
+            return item;
+          });
+          return updatedData; // Вернем обновленные данные
+        })
+        .then((updatedData) => {
+          this.setState({ data: updatedData });
+          return data;
+        })
+        .catch((error) => {
+          console.error('Failed to update favorite status:', error);
+        });
+    } else if (btnId === 'basket') {
+      fetch(`https://66169b81ed6b8fa43480e96b.mockapi.io/carts/${key}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          inCart: true
+        })
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Failed to update cart status');
+          }
+          return response.json();
+        })
+        .then(() => {
+          const updatedData = data.map((item) => {
+            if (item.id === key) {
+              return { ...item, inCart: true };
+            }
+            return item;
+          });
+          return updatedData;
+        })
+        .then((updatedData) => {
+          this.setState({ data: updatedData });
+          return data;
+        })
+        .catch((error) => {
+          console.error('Failed to update cart status:', error);
+        });
+    }
+  };
+
   onFilter = (filter) => {
     this.setState({ filter });
   };
@@ -75,6 +144,7 @@ export class ShopPage extends Component {
           error={error}
           onFilter={this.onFilter}
           onSearch={this.onSearch}
+          onPut={this.onPut}
         />
 
         <Footer color='#000' />
