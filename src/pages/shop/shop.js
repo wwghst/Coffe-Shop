@@ -9,35 +9,23 @@ export class ShopPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
-      error: null,
-      data: [], // Инициализируем data пустым массивом
+      loading: props.loading,
+      error: props.error,
+      data: props.data,
       filter: '',
       search: ''
     };
   }
 
-  componentDidMount() {
-    fetch('https://66169b81ed6b8fa43480e96b.mockapi.io/carts')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        this.setState({
-          data,
-          loading: false
-        });
-        return data;
-      })
-      .catch((error) => {
-        this.setState({
-          error: error.message,
-          loading: false
-        });
+  componentDidUpdate(prevProps) {
+    const { data, loading, error } = this.props;
+    if (prevProps.data !== data || prevProps.loading !== loading || prevProps.error !== error) {
+      this.setState({
+        loading,
+        error,
+        data
       });
+    }
   }
 
   onFilter = (filter) => {
@@ -81,15 +69,14 @@ export class ShopPage extends Component {
         <Header />
         <Tittle text='Our Coffee' alt='coffee' imgName={ShopBg} />
         <AboutShop />
-        {!loading && !error && (
-          <ShopContent
-            data={visibleData}
-            loading={loading}
-            error={error}
-            onFilter={this.onFilter}
-            onSearch={this.onSearch}
-          />
-        )}
+        <ShopContent
+          data={visibleData}
+          loading={loading}
+          error={error}
+          onFilter={this.onFilter}
+          onSearch={this.onSearch}
+        />
+
         <Footer color='#000' />
       </div>
     );

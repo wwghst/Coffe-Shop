@@ -6,33 +6,8 @@ import Plus from '../../assets/Plus.svg';
 import './shopContent.scss';
 
 class ShopContent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: props.data,
-      search: ''
-    };
-  }
-
-  componentDidUpdate(prevProps) {
-    const { data } = this.props;
-    if (prevProps.data !== data) {
-      this.setState({
-        data
-      });
-    }
-  }
-
-  onSearch = (e) => {
-    const { onSearch } = this.props;
-    const search = e.target.value;
-    this.setState({ search });
-    onSearch(search);
-  };
-
   render() {
-    const { data, search } = this.state;
-    const { onFilter } = this.props;
+    const { data, onFilter, onSearch } = this.props;
 
     const buttonsData = [
       { name: 'Brazil', label: 'Brazil' },
@@ -50,8 +25,7 @@ class ShopContent extends Component {
               className='shopContent__input'
               type='text'
               placeholder='start typing here...'
-              onChange={this.onSearch}
-              value={search}
+              onChange={(e) => onSearch(e.target.value)}
             />
           </div>
           <div className='shopContent__box'>
