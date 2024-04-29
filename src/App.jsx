@@ -3,7 +3,7 @@ import { Component } from 'react';
 // eslint-disable-next-line no-unused-vars
 import FavAndCartBg from './assets/images/FavoriteAndCartTittleBg.png';
 // eslint-disable-next-line no-unused-vars
-import { ShopPage } from './pages';
+import { BasketPage, ShopPage } from './pages';
 
 import './App.css';
 
@@ -43,7 +43,8 @@ class App extends Component {
   render() {
     const { loading, data, error } = this.state;
     if (!loading && !error) {
-      return <ShopPage data={data} loading={loading} error={error} />;
+      /* return <ShopPage data={data} loading={loading} error={error} />; */
+      return <BasketPage data={data} />;
     }
   }
 }
