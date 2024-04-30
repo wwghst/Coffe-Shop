@@ -65,7 +65,10 @@ class ShopContent extends Component {
                 />
               </button>
               <img src={Img} alt='cart' className='shopContent__cartImg' />
-              <h2 className='shopContent__title'>{item.title}</h2>
+              <h2 className='shopContent__title'>
+                {item.title}
+                {item.weight}
+              </h2>
               <div className='shopContent__cartFooter'>
                 <button
                   className='shopContent__plusBtn'
