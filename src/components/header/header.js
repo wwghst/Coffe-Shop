@@ -17,9 +17,15 @@ export class Header extends Component {
         <a href='#!' className='header__link'>
           Our coffee
         </a>
+        <div className="header__links">
         <a href='#!' className='header__link'>
-          Favorite / Basket
+          Favorites
         </a>
+        <span className='header__line'>/</span>
+        <a href='#!' className='header__link'>
+          Basket
+        </a>
+        </div>
       </header>
     );
   }
