@@ -17,4 +17,15 @@
     &__logo{
         width: 50px;
     }
+    
+    &__line{
+        font-size: 15px;
+        color: #ffffff;
+    }
+
+    &__links{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
 }
