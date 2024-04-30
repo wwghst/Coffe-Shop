@@ -8,7 +8,7 @@ import './basketContent.scss';
 
 export class BasketContent extends Component {
   render() {
-    const { data } = this.props;
+    const { data, onDelete, onPlus } = this.props;
     return (
       <div className='basketContent'>
         <div className='basketContent__header'>
@@ -27,13 +27,13 @@ export class BasketContent extends Component {
               <div className='basketContent__cart'>
                 <img className='basketContent__img' src={Coffee} alt='coffee' />
                 <h1 className='basketContent__name'>{item.title}</h1>
-                <h2 className='basketContent__count'>{item.weight}</h2>
+                <h2 className='basketContent__count'>{item.weight}kg </h2>
                 <h2 className='basketContent__price'>{item.price}$</h2>
                 <div className='basketContent__buttons'>
-                  <button className='basketContent__btn'>
+                  <button className='basketContent__btn' onClick={() => onPlus(item, item.id)}>
                     <img src={PlusBlackImg} alt='plus' />
                   </button>
-                  <button className='basketContent__btn'>
+                  <button className='basketContent__btn' onClick={() => onDelete(item.id)}>
                     <img src={BasketImg} alt='basket' />
                   </button>
                 </div>
@@ -44,7 +44,9 @@ export class BasketContent extends Component {
           <h1 className='dataZero'>Add something to cart</h1>
         )}
         <div className='basketContent__buyBox'>
-          <span className='basketContent__total'>Total: {data.length > 0 ? data[0].price * data.length : '0'}$</span>
+          <span className='basketContent__total'>
+            Total: {data.length > 0 ? data[0].price * data.length : '0'}$
+          </span>
           <button className='basketContent__buyBtn' type='submit'>
             Buy
           </button>

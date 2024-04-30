@@ -26,6 +26,56 @@ export class BasketPage extends Component {
     }
   }
 
+  onDelete = (key) => {
+    const { data } = this.state;
+    fetch(`https://66169b81ed6b8fa43480e96b.mockapi.io/carts/${key}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        inCart: false
+      })
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to update favorite status');
+        }
+        return response.json();
+      })
+      .then(() => {
+        const updatedData = data.map((item) => {
+          if (item.id === key) {
+            return { ...item, inCart: false };
+          }
+          return item;
+        });
+        return updatedData;
+      })
+      .then((updatedData) => {
+        this.setState({ data: updatedData });
+        return data;
+      })
+      .catch((error) => {
+        console.error('Failed to update favorite status:', error);
+      });
+  };
+
+  onPlus = (item, key) => {
+    const { data } = this.state;
+    const updatedData = data.map((item) => {
+      if (item.id === key) {
+        return {
+          ...item,
+          weight: item.weight + 1,
+          price: Math.floor(item.price + 6.99)
+        };
+      }
+      return item;
+    });
+    this.setState({ data: updatedData });
+  };
+
   render() {
     const { data, loading, error } = this.state;
     const visibleData = data.filter((item) => item.inCart === true);
@@ -33,7 +83,13 @@ export class BasketPage extends Component {
       <div className='container'>
         <Header />
         <Tittle text='Cart' alt='coffee' imgName={BasketBg} />
-        <BasketContent data={visibleData} loading={loading} error={error} />
+        <BasketContent
+          data={visibleData}
+          loading={loading}
+          error={error}
+          onDelete={this.onDelete}
+          onPlus={this.onPlus}
+        />
         <Footer color='#000' />
       </div>
     );
