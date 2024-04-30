@@ -1,5 +1,6 @@
 export * from './aboutHome/aboutHome';
 export * from './aboutShop/aboutShop';
+export * from './basketContent/basketContent';
 export * from './footer/footer';
 export * from './header/header';
 export * from './homeCards/homeCards';

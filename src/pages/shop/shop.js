@@ -53,7 +53,7 @@ export class ShopPage extends Component {
             }
             return item;
           });
-          return updatedData; // Вернем обновленные данные
+          return updatedData;
         })
         .then((updatedData) => {
           this.setState({ data: updatedData });
