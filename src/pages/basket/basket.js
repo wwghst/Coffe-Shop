@@ -82,7 +82,7 @@ export class BasketPage extends Component {
     return (
       <div className='container'>
         <Header />
-        <Tittle text='Cart' alt='coffee' imgName={BasketBg} />
+        <Tittle text='Basket' alt='coffee' imgName={BasketBg} />
         <BasketContent
           data={visibleData}
           loading={loading}

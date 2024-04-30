@@ -14,7 +14,7 @@ export class BasketContent extends Component {
         <div className='basketContent__header'>
           <span className='basketContent__tittle pointer'>Favorites</span>
           <span className='basketContent__tittle-noHover'>/</span>
-          <span className='basketContent__tittle pointer'>Cart</span>
+          <span className='basketContent__tittle pointer'>Basket</span>
         </div>
         <div className='basketContent__header gap'>
           <span className='basketContent__tittle-noHover'>Name</span>
