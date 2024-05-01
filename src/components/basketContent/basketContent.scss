@@ -14,6 +14,8 @@
 
     &__tittle{
         font-size: 24px;
+        color: #000;
+        text-decoration:none;
         &:hover{
             text-decoration: underline;
         }
@@ -105,6 +107,9 @@
 }
 .pointer{
     cursor: pointer;
+}
+.tittle-active{
+    text-decoration: underline;
 }
 .dataZero{
     font-size: 150px;

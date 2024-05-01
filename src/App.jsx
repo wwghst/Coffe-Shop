@@ -48,9 +48,18 @@ class App extends Component {
         <BrowserRouter>
           <Routes>
             <Route exact path='/Coffe-Shop' element={<Home data={data} />} />
-            <Route path='/shop' element={<ShopPage data={data} loading={loading} error={error} />} />
-            <Route path='/favorites' element={<FavoritesPage data={data} loading={loading} error={error}/>}/>
-            <Route path='/basket' element={<BasketPage data={data} loading={loading} error={error}/>}/>
+            <Route
+              path='/shop'
+              element={<ShopPage data={data} loading={loading} error={error} />}
+            />
+            <Route
+              path='/favorites'
+              element={<FavoritesPage data={data} loading={loading} error={error} />}
+            />
+            <Route
+              path='/basket'
+              element={<BasketPage data={data} loading={loading} error={error} />}
+            />
           </Routes>
         </BrowserRouter>
       );
