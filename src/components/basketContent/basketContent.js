@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import BasketImg from '../../assets/Basket.svg';
 import Coffee from '../../assets/images/1.png';
@@ -12,9 +13,13 @@ export class BasketContent extends Component {
     return (
       <div className='basketContent'>
         <div className='basketContent__header'>
-          <span className='basketContent__tittle pointer'>Favorites</span>
+          <Link to='/favorites' className='basketContent__tittle pointer'>
+            Favorites
+          </Link>
           <span className='basketContent__tittle-noHover'>/</span>
-          <span className='basketContent__tittle pointer'>Basket</span>
+          <Link to='/basket' className='basketContent__tittle pointer tittle-active'>
+            Basket
+          </Link>
         </div>
         <div className='basketContent__header gap'>
           <span className='basketContent__tittle-noHover'>Name</span>

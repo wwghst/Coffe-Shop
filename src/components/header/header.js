@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import LogoOne from '../../assets/LogoOne.svg';
 
@@ -10,21 +11,21 @@ export class Header extends Component {
       <header className='header'>
         <div>
           <img src={LogoOne} alt='logo' className='header__logo' />
-          <a href='#!' className='header__link'>
-            Coffee house
-          </a>
+          <Link to='/Coffe-Shop' className='header__link'>
+            About Us
+          </Link>
         </div>
-        <a href='#!' className='header__link'>
-          Our coffee
-        </a>
+        <Link to='/shop' className='header__link'>
+          Our Coffee
+        </Link>
         <div className='header__links'>
-          <a href='#!' className='header__link'>
+          <Link to='/favorites' className='header__link'>
             Favorites
-          </a>
+          </Link>
           <span className='header__line'>/</span>
-          <a href='#!' className='header__link'>
+          <Link to='/basket' className='header__link'>
             Basket
-          </a>
+          </Link>
         </div>
       </header>
     );

@@ -1,9 +1,10 @@
 import { Component } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // eslint-disable-next-line no-unused-vars
 import FavAndCartBg from './assets/images/FavoriteAndCartTittleBg.png';
 // eslint-disable-next-line no-unused-vars
-import { FavoritesPage, Home, ShopPage } from './pages';
+import { BasketPage, FavoritesPage, Home, ShopPage } from './pages';
 
 import './App.css';
 
@@ -43,9 +44,25 @@ class App extends Component {
   render() {
     const { loading, data, error } = this.state;
     if (!loading && !error) {
-      /* return <ShopPage data={data} loading={loading} error={error} />; */
-      // return <BasketPage data={data} loading={loading} error={error} />;
-      return <FavoritesPage data={data} loading={loading} error={error} />;
+      return (
+        <BrowserRouter>
+          <Routes>
+            <Route exact path='/Coffe-Shop' element={<Home data={data} />} />
+            <Route
+              path='/shop'
+              element={<ShopPage data={data} loading={loading} error={error} />}
+            />
+            <Route
+              path='/favorites'
+              element={<FavoritesPage data={data} loading={loading} error={error} />}
+            />
+            <Route
+              path='/basket'
+              element={<BasketPage data={data} loading={loading} error={error} />}
+            />
+          </Routes>
+        </BrowserRouter>
+      );
     }
   }
 }
