@@ -35,10 +35,10 @@ export class BasketContent extends Component {
                 <h2 className='basketContent__count'>{item.weight}kg </h2>
                 <h2 className='basketContent__price'>{item.price}$</h2>
                 <div className='basketContent__buttons'>
-                  <button className='basketContent__btn' onClick={() => onPlus(item, item.id)}>
+                  <button className='basketContent__btn' type='button'  onClick={() => onPlus(item, item.id)}>
                     <img src={PlusBlackImg} alt='plus' />
                   </button>
-                  <button className='basketContent__btn' onClick={() => onDelete(item.id)}>
+                  <button className='basketContent__btn' type='button' onClick={() => onDelete(item.id)}>
                     <img src={BasketImg} alt='basket' />
                   </button>
                 </div>

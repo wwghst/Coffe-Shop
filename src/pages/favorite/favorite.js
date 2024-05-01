@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import BlackHeart from '../../assets/BlackHeart.svg';
 import Heart from '../../assets/Heart.svg';
@@ -81,7 +82,15 @@ export class FavoritesPage extends Component {
       <div className='container'>
         <Header />
         <Tittle text='Favorites' alt='coffee' imgName={BasketBg} />
-
+        <div className='basketContent__header'>
+          <Link to='/favorites' className='basketContent__tittle pointer tittle-active'>
+            Favorites
+          </Link>
+          <span className='basketContent__tittle-noHover'>/</span>
+          <Link to='/basket' className='basketContent__tittle pointer '>
+            Basket
+          </Link>
+        </div>
         {!data.filter((item) => item.favorite).length ? (
           <span className='favorites__notDate'>Add something to favotire</span>
         ) : (
